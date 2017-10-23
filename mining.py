@@ -238,7 +238,7 @@ def next_bits_wt(msg, block_count):
         prior_timestamp = timestamp
         adj_time_i = time_i * target_i // last_target # Difficulty weight
         timespan += adj_time_i * (i - first) # Recency weight
-    timespan = timespan * 2 // (block_count + 1) # Normalize recency weight
+    timespan = timespan * 2 // (block_count - 1) # Normalize recency weight
     target = last_target * timespan # Standard retarget
     target //= 600 * block_count
     return target_to_bits(target)
